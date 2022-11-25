@@ -1,5 +1,10 @@
+import { Label, TextInput, Button } from "flowbite-react";
+
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
+
+import { FaSignInAlt } from "react-icons/fa";
+import { MdMail, MdLock } from "react-icons/md";
 
 export default function LoginForm() {
   const {
@@ -18,22 +23,16 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit(_onSubmit)}>
       <section className="mb-6">
-        <label
-          className={["form-label", errors.email && "text-red-500"].join(" ")}
-          htmlFor="email"
-        >
-          Email
-        </label>
-        <input
-          type="text"
-          className={[
-            "form-input",
-            errors.email
-              ? "border-red-500 mb-2"
-              : "border-gray-300 focus:border-blue-600",
-          ].join(" ")}
+        <div className="mb-2 block">
+          <Label className="mb-2" htmlFor="email" value="Email" />
+        </div>
+        <TextInput
           id="email"
-          placeholder="e.g. someone@example.com"
+          type="email"
+          name="email"
+          placeholder="e.g. me@example.com"
+          icon={MdMail}
+          {...(errors.email && { color: "failure" })}
           {...register("email", {
             required: {
               value: true,
@@ -45,43 +44,48 @@ export default function LoginForm() {
               message: "Email not valid",
             },
           })}
+          {...(errors.email && {
+            helperText: (
+              <p className="italic text-red-500 text-xs">
+                {errors.email?.message}
+              </p>
+            ),
+          })}
         />
-        <p className="italic text-red-500 text-xs">{errors.email?.message}</p>
       </section>
 
       <section className="mb-6">
-        <label
-          className={["form-label", errors.password && "text-red-500"].join(
-            " "
-          )}
-          htmlFor="password"
-        >
-          Password
-        </label>
-        <input
-          type="password"
-          className={[
-            "form-input",
-            errors.password
-              ? "border-red-500 mb-2"
-              : "border-gray-300 focus:border-blue-600",
-          ].join(" ")}
+        <div className="mb-2 block">
+          <Label className="mb-2" htmlFor="password" value="Password" />
+        </div>
+        <TextInput
           id="password"
+          type="password"
+          name="password"
           placeholder="* * * * * * * * * * * *"
+          icon={MdLock}
+          {...(errors.password && { color: "failure" })}
           {...register("password", {
             required: {
               value: true,
               message: "This field is required",
             },
           })}
+          {...(errors.password && {
+            helperText: (
+              <p className="italic text-red-500 text-xs">
+                {errors.password?.message}
+              </p>
+            ),
+          })}
         />
-        <p className="italic text-red-500 text-xs">
-          {errors.password?.message}
-        </p>
       </section>
 
       <section className="text-center lg:text-left">
-        <button className="form-button">Login</button>
+        <Button type="submit">
+          <FaSignInAlt className="mr-2 h-5 w-5" />
+          Login
+        </Button>
       </section>
     </form>
   );

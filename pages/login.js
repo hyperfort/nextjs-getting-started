@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { getSession } from "next-auth/react";
+
 import LoginForm from "../components/forms/login-form";
 
 export default function Login() {
@@ -19,4 +21,21 @@ export default function Login() {
       </section>
     </main>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }

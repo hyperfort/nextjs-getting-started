@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 
 export default function LoginForm() {
@@ -7,8 +8,11 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm();
 
-  function _onSubmit(data) {
-    console.log(data);
+  async function _onSubmit(data) {
+    await signIn("credentials", {
+      ...data,
+      callbackUrl: `${window.location.origin}/`,
+    });
   }
 
   return (

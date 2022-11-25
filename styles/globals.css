@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .form-label {
+    @apply font-bold inline-block mb-2 text-gray-800 text-lg;
+  }
+  .form-input {
+    @apply bg-clip-padding bg-white block border border-solid ease-in-out font-normal m-0 px-4 py-2 rounded text-gray-700 text-lg transition w-full focus:text-gray-700 focus:bg-white focus:outline-none;
+  }
+  .form-button {
+    @apply bg-blue-600 duration-150 ease-in-out font-medium inline-block leading-snug px-7 py-3 rounded shadow-md text-sm text-white transition uppercase focus:bg-blue-700 focus:outline-none focus:ring-0 focus:shadow-lg hover:bg-blue-700 hover:shadow-lg active:bg-blue-800 active:shadow-lg;
+  }
+}

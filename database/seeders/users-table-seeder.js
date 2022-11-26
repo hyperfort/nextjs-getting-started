@@ -1,7 +1,7 @@
 const { Role } = require("@prisma/client");
 const bcrypt = require("bcrypt");
 
-const prisma = require("../../lib/prisma");
+const { prisma } = require("../../lib/prisma");
 
 class UsersTableSeeder {
   static async run() {
@@ -20,4 +20,4 @@ class UsersTableSeeder {
   }
 }
 
-module.exports = UsersTableSeeder;
+module.exports = { UsersTableSeeder };

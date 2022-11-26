@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { FaSignInAlt } from "react-icons/fa";
 import { MdMail, MdLock } from "react-icons/md";
 
-export default function LoginForm() {
+export const LoginForm = () => {
   const {
     register,
     handleSubmit,
@@ -89,4 +89,4 @@ export default function LoginForm() {
       </section>
     </form>
   );
-}
+};

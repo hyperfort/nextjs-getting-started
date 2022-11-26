@@ -1,4 +1,4 @@
-const UsersTableSeeder = require("./users-table-seeder");
+const { UsersTableSeeder } = require("./users-table-seeder");
 
 (async function () {
   await UsersTableSeeder.run();

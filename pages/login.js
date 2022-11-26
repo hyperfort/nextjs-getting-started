@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getSession } from "next-auth/react";
 
-import LoginForm from "../components/forms/login-form";
+import { LoginForm } from "../components/forms/login-form";
 
 export default function Login() {
   return (

@@ -8,7 +8,7 @@ export default withAuth({
     authorized: ({ req, token }) => {
       const { pathname } = req.nextUrl;
 
-      if (pathname.endsWith(".ico") || pathname.endsWith(".webp") || token) {
+      if (pathname.endsWith(".ico") || pathname.endsWith(".png") || token) {
         return true;
       }
 

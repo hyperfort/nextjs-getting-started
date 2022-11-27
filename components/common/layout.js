@@ -19,7 +19,7 @@ export function Layout({ children }) {
   return (
     <>
       {status === "authenticated" && (
-        <Navbar className="bg-gray-500" fluid={true} rounded={false}>
+        <Navbar fluid={true} rounded={false}>
           <Navbar.Brand href="https://flowbite.com/">
             <Image
               src="/Redial-Logo.png"
@@ -52,22 +52,20 @@ export function Layout({ children }) {
               <Dropdown.Divider />
               <Dropdown.Item>Sign out</Dropdown.Item>
             </Dropdown>
-            <Navbar.Toggle className="ml-2 text-white hover:bg-gray-900 focus:ring-gray-500" />
+            <Navbar.Toggle className="ml-2" />
           </div>
-          <Navbar.Collapse className="text-white">
+          <Navbar.Collapse>
             {links.map((link) => (
-              <Navbar.Link
-                className="text-white hover:text-gray-900"
-                href={link.path}
-                key={link.name}
-              >
+              <Navbar.Link href={link.path} key={link.name}>
                 {link.name}
               </Navbar.Link>
             ))}
           </Navbar.Collapse>
         </Navbar>
       )}
-      <main>{children}</main>
+      <main {...(status === "authenticated" && { className: "bg-gray-300" })}>
+        {children}
+      </main>
     </>
   );
 }

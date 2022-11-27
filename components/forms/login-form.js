@@ -2,11 +2,10 @@ import { Label, TextInput, Button } from "flowbite-react";
 
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
-
 import { FaSignInAlt } from "react-icons/fa";
 import { MdMail, MdLock } from "react-icons/md";
 
-export const LoginForm = () => {
+export function LoginForm(props) {
   const {
     register,
     handleSubmit,
@@ -14,10 +13,13 @@ export const LoginForm = () => {
   } = useForm();
 
   async function _onSubmit(data) {
-    await signIn("credentials", {
+    const { ok, url, error } = await signIn("credentials", {
       ...data,
       callbackUrl: `${window.location.origin}/`,
+      redirect: false,
     });
+
+    props.onSubmit(ok, url, error);
   }
 
   return (
@@ -89,4 +91,4 @@ export const LoginForm = () => {
       </section>
     </form>
   );
-};
+}

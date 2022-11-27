@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
-import prisma from "../../../lib/prisma";
+import { prisma } from "../../../lib/prisma";
 
 export default NextAuth({
   providers: [
@@ -23,4 +23,21 @@ export default NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user, account }) {
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({ session, user, token }) {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          role: token.role,
+        },
+      };
+    },
+  },
 });

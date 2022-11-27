@@ -3,14 +3,14 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useMemo } from "react";
 
-import { LINKS } from "../../utils/links";
+import { routes } from "../../routes";
 
 export function Layout({ children }) {
   const { status, data } = useSession();
 
   const links = useMemo(() => {
     if (status === "authenticated") {
-      return LINKS.filter((item) => item.roles.includes(data.user.role));
+      return routes.filter((item) => item.roles.includes(data.user.role));
     }
 
     return [];

@@ -1,27 +1,27 @@
-export const LINKS = [
+export const routes = [
   {
     name: "Home",
     path: "/",
-    roles: ["USER"],
+    requiredRoles: ["USER"],
   },
   {
     name: "About",
     path: "/",
-    roles: ["ADMIN", "USER"],
+    requiredRoles: ["ADMIN", "USER"],
   },
   {
     name: "Services",
     path: "/",
-    roles: ["ADMIN"],
+    requiredRoles: ["ADMIN"],
   },
   {
     name: "Pricing",
     path: "/",
-    roles: ["ADMIN", "USER"],
+    requiredRoles: ["ADMIN", "USER"],
   },
   {
     name: "Contact",
     path: "/",
-    roles: ["ADMIN"],
+    requiredRoles: ["ADMIN"],
   },
 ];

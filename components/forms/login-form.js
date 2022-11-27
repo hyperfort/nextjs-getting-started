@@ -82,7 +82,7 @@ export const LoginForm = () => {
       </section>
 
       <section className="text-center lg:text-left">
-        <Button type="submit">
+        <Button color="success" type="submit">
           <FaSignInAlt className="mr-2 h-5 w-5" />
           Login
         </Button>

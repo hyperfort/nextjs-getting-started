@@ -1,9 +1,9 @@
 import "../styles/globals.css";
 
+import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
 
 import { Layout } from "../components/common/layout";
-import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

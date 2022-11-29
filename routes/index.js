@@ -1,27 +1,17 @@
 export const routes = [
   {
-    name: "Home",
+    name: "Dashboard",
     path: "/",
-    requiredRoles: ["USER"],
+    requiredRoles: ["USER", "ADMIN"],
   },
   {
-    name: "About",
-    path: "/",
-    requiredRoles: ["ADMIN", "USER"],
-  },
-  {
-    name: "Services",
-    path: "/",
+    name: "Users",
+    path: "/users",
     requiredRoles: ["ADMIN"],
   },
   {
-    name: "Pricing",
-    path: "/",
+    name: "Products",
+    path: "/products",
     requiredRoles: ["ADMIN", "USER"],
-  },
-  {
-    name: "Contact",
-    path: "/",
-    requiredRoles: ["ADMIN"],
   },
 ];

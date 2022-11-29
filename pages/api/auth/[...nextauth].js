@@ -24,13 +24,13 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account }) {
+    jwt: async ({ token, user }) => {
       if (user) {
         token.role = user.role;
       }
       return token;
     },
-    async session({ session, user, token }) {
+    session: async ({ session, _, token }) => {
       return {
         ...session,
         user: {

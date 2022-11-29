@@ -1,5 +1,4 @@
 import { Label, TextInput, Button } from "flowbite-react";
-
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { FaSignInAlt } from "react-icons/fa";
@@ -48,9 +47,9 @@ export function LoginForm(props) {
           })}
           {...(errors.email && {
             helperText: (
-              <p className="italic text-red-500 text-xs">
+              <span className="italic text-red-500 text-xs">
                 {errors.email?.message}
-              </p>
+              </span>
             ),
           })}
         />
@@ -75,9 +74,9 @@ export function LoginForm(props) {
           })}
           {...(errors.password && {
             helperText: (
-              <p className="italic text-red-500 text-xs">
+              <span className="italic text-red-500 text-xs">
                 {errors.password?.message}
-              </p>
+              </span>
             ),
           })}
         />

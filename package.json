@@ -17,6 +17,7 @@
     "flowbite-react": "^0.3.5",
     "next": "13.0.5",
     "next-auth": "^4.17.0",
+    "prisma-pagination": "^0.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.39.5",

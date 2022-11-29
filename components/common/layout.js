@@ -1,6 +1,6 @@
 import { Avatar, Dropdown, Navbar, Footer, Spinner } from "flowbite-react";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useMemo } from "react";
 
 import { Loading } from "./loading";
@@ -14,6 +14,12 @@ export function Layout({ children }) {
       ? routes.filter((item) => item.requiredRoles.includes(data.user.role))
       : [];
   }, [status]);
+
+  async function _handleLogOut() {
+    await signOut({
+      callbackUrl: `${window.location.origin}/login`,
+    });
+  }
 
   return (
     <>
@@ -50,7 +56,7 @@ export function Layout({ children }) {
                 </Dropdown.Header>
                 <Dropdown.Item>Settings</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item>Sign out</Dropdown.Item>
+                <Dropdown.Item onClick={_handleLogOut}>Sign out</Dropdown.Item>
               </Dropdown>
               <Navbar.Toggle className="ml-2" />
             </div>
